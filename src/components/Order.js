@@ -14,7 +14,7 @@ class Order extends React.Component {
 
     if (!fish || fish.status === 'unavailable') {
       return (
-        <li key={fish}>
+        <li key={key}>
           Sorry, {fish ? fish.name : 'Fish'} is no longer available!
         </li>
       )
