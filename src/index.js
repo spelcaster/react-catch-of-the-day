@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute } from 'react-router'
+import { createHistory, useBasename } from 'history'
 
 import './css/style.css'
 
@@ -9,9 +10,13 @@ import App from './components/App'
 import StorePicker from './components/StorePicker'
 import NotFound from './components/NotFound'
 
+const history = useBasename(createHistory)({
+  basename: '/catch-of-the-day'
+})
+
 const Root = () => {
   return (
-    <Router history={browserHistory}>
+    <Router history={history}>
       <Route path="/" component={Index}>
         <IndexRoute component={StorePicker} />
         <Route path="store/:storeId" component={App} />

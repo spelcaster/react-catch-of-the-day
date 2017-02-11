@@ -2,11 +2,13 @@
   "name": "catch-of-the-day",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/catch-of-the-day/",
   "devDependencies": {
     "react-scripts": "0.8.5",
     "standard": "^8.6.0"
   },
   "dependencies": {
+    "history": "^3.2.1",
     "re-base": "^2.5.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
