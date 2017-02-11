@@ -10,4 +10,8 @@ class Index extends React.Component {
   }
 }
 
+Index.propTypes = {
+  children: React.PropTypes.object.isRequired
+}
+
 export default Index
