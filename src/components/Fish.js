@@ -2,6 +2,10 @@ import React from 'react'
 import { formatPrice } from '../helpers'
 
 class Fish extends React.Component {
+  static propTypes = {
+    addToOrder: React.PropTypes.func.isRequired
+  }
+
   render () {
     const { details, index } = this.props
     const isAvailable = details.status === 'available'
@@ -19,10 +23,6 @@ class Fish extends React.Component {
       </li>
     )
   }
-}
-
-Fish.propTypes = {
-  addToOrder: React.PropTypes.func.isRequired
 }
 
 export default Fish

@@ -2,13 +2,11 @@ import React from 'react'
 import { getFunName } from '../helpers'
 
 class StorePicker extends React.Component {
-  constructor () {
-    super()
-
-    this.goToStore = this.goToStore.bind(this)
+  static propTypes = {
+    router: React.PropTypes.object
   }
 
-  goToStore (event) {
+  goToStore = (event) => {
     event.preventDefault()
     const storeId = this.storeInput.value
     console.log(storeId)
@@ -26,10 +24,6 @@ class StorePicker extends React.Component {
       </form>
     )
   }
-}
-
-StorePicker.propTypes = {
-  router: React.PropTypes.object
 }
 
 export default StorePicker

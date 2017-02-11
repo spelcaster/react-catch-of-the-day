@@ -2,13 +2,13 @@ import React from 'react'
 import { formatPrice } from '../helpers'
 
 class Order extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.renderOrder = this.renderOrder.bind(this)
+  static propTypes = {
+    fishes: React.PropTypes.object.isRequired,
+    order: React.PropTypes.object.isRequired,
+    removeFromOrder: React.PropTypes.func.isRequired
   }
 
-  renderOrder (key) {
+  renderOrder = (key) => {
     const fish = this.props.fishes[key]
     const count = this.props.order[key]
 
@@ -59,12 +59,6 @@ class Order extends React.Component {
       </div>
     )
   }
-}
-
-Order.propTypes = {
-  fishes: React.PropTypes.object.isRequired,
-  order: React.PropTypes.object.isRequired,
-  removeFromOrder: React.PropTypes.func.isRequired
 }
 
 export default Order

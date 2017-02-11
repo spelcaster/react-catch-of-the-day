@@ -3,14 +3,15 @@ import React from 'react'
 import AddFishForm from './AddFishForm'
 
 class Inventory extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.renderInventory = this.renderInventory.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+  static propTypes = {
+    fishes: React.PropTypes.object,
+    updateFish: React.PropTypes.func.isRequired,
+    removeFish: React.PropTypes.func.isRequired,
+    addFish: React.PropTypes.func.isRequired,
+    loadSamples: React.PropTypes.func.isRequired
   }
 
-  handleChange (e, key) {
+  handleChange = (e, key) => {
     const fish = this.props.fishes[key]
 
     // update fish with new data
@@ -22,7 +23,7 @@ class Inventory extends React.Component {
     this.props.updateFish(key, updateFish)
   }
 
-  renderInventory (key) {
+  renderInventory = (key) => {
     const fish = this.props.fishes[key]
 
     return (
@@ -55,14 +56,6 @@ class Inventory extends React.Component {
       </div>
     )
   }
-}
-
-Inventory.propTypes = {
-  fishes: React.PropTypes.object,
-  updateFish: React.PropTypes.func.isRequired,
-  removeFish: React.PropTypes.func.isRequired,
-  addFish: React.PropTypes.func.isRequired,
-  loadSamples: React.PropTypes.func.isRequired
 }
 
 export default Inventory

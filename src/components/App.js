@@ -8,23 +8,16 @@ import base from '../base'
 import sampleFishes from '../sample-fishes'
 
 class App extends React.Component {
-  constructor () {
-    super()
-
-    // getInitialState
-    this.state = {
-      fishes: {},
-      order: {}
-    }
-
-    this.addFish = this.addFish.bind(this)
-    this.loadSampleFishes = this.loadSampleFishes.bind(this)
-    this.addToOrder = this.addToOrder.bind(this)
-    this.updateFish = this.updateFish.bind(this)
-    this.removeFish = this.removeFish.bind(this)
+  static propTypes = {
+    params: React.PropTypes.object.isRequired
   }
 
-  componentWillMount () {
+  state = {
+    fishes: {},
+    order: {}
+  }
+
+  componentWillMount = () => {
     // this runs right before the <App> is rendered
     this.ref = base.syncState(
       `${this.props.params.storeId}/fishes`,
@@ -44,22 +37,22 @@ class App extends React.Component {
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount = () => {
     base.removeBinding(this.ref)
   }
 
-  componentWillUpdate (nextProps, nextState) {
+  componentWillUpdate = (nextProps, nextState) => {
     localStorage.setItem(
       `order-${this.props.params.storeId}`,
       JSON.stringify(nextState.order)
     )
   }
 
-  loadSampleFishes () {
+  loadSampleFishes = () => {
     this.setState({ fishes: sampleFishes })
-  }
+  };
 
-  addFish (fish) {
+  addFish = (fish) => {
     const fishes = {...this.state.fishes}
     const timestamp = Date.now()
 
@@ -68,7 +61,7 @@ class App extends React.Component {
     this.setState({ fishes })
   }
 
-  updateFish (key, fish) {
+  updateFish = (key, fish) => {
     const fishes = {...this.state.fishes}
 
     fishes[key] = fish
@@ -76,7 +69,7 @@ class App extends React.Component {
     this.setState({ fishes })
   }
 
-  removeFish (key) {
+  removeFish = (key) => {
     const fishes = {...this.state.fishes}
 
     fishes[key] = null
@@ -84,14 +77,14 @@ class App extends React.Component {
     this.setState({ fishes })
   }
 
-  addToOrder (key) {
+  addToOrder = (key) => {
     const order = {...this.state.order}
     order[key] = order[key] + 1 || 1
 
     this.setState({ order })
   }
 
-  removeFromOrder (key) {
+  removeFromOrder = (key) => {
     const order = {...this.state.order}
 
     delete order[key]
@@ -124,10 +117,6 @@ class App extends React.Component {
       </div>
     )
   }
-}
-
-App.propTypes = {
-  params: React.PropTypes.object.isRequired
 }
 
 export default App
