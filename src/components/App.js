@@ -120,7 +120,8 @@ class App extends React.Component {
           loadSamples={this.loadSampleFishes}
           addFish={this.addFish}
           updateFish={this.updateFish}
-          removeFish={this.removeFish} />
+          removeFish={this.removeFish}
+          storeId={this.props.params.storeId} />
       </div>
     )
   }
